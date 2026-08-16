@@ -302,14 +302,13 @@ gantt
 > [!IMPORTANT]
 > **Banco de dados:** Recomendo **PostgreSQL** pelos motivos listados acima. Confirma essa escolha, ou prefere SQL Server (MSSQL) considerando familiaridade da equipe?
 
-## Open Questions
+## Decisões Confirmadas com o Cliente
 
-> [!NOTE]
-> 1. **Domínio/Hospedagem:** Já possuem o domínio `depaulafit.com.br` registrado? Onde pretendem hospedar (Azure, AWS, VPS)?
-> 2. **E-commerce futuro:** Para meios de pagamento, estão considerando quais gateways? (Mercado Pago, PagSeguro, Stripe?)
-> 3. **Regime fiscal:** Precisam de integração com nota fiscal eletrônica (NF-e/NFC-e) nas fases futuras?
-> 4. **Multi-loja:** O sistema atenderá apenas a loja de Campinas, ou há planos de expansão?
-> 5. **Equipe técnica:** Além de nós, há alguém da equipe deles que fará manutenção do sistema?
+- **PostgreSQL**: Confirmado como SGBD do projeto (disponível no plano SmartASP).
+- **Gateways de Pagamento**: Mercado Pago e PagSeguro para a fase de e-commerce.
+- **Emissão Fiscal (NF-e/NFC-e)**: Arquitetura preparada com abstração para futuro módulo de notas fiscais.
+- **Estrutura Multi-Loja**: Modelo de dados preparado com chave `StoreId` para facilitar expansão futura sem refatoração.
+- **Manutenção**: Foco total em estabilidade e facilidade de uso pela equipe da loja, sem dependência de equipe técnica interna.
 
 ---
 

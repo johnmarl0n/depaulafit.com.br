@@ -1,0 +1,20 @@
+# Visual Studio / C#
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Node / Web
+node_modules/
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Build / Output
+publish/
+dist/
