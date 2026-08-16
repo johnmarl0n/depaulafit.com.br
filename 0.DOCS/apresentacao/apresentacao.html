@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DePaula Fitness Store — Proposta de Projeto Digital</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="apple-touch-icon" href="assets/logo.png" />
+  <meta name="theme-color" content="#6B2D3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bordeaux:    #6B2D3E;
+      --bordeaux-dk: #4A1D2B;
+      --rose:        #C4838A;
+      --rose-lt:     #E8C0C4;
+      --rose-pale:   #F5EAEB;
+      --cream:       #FAF6F1;
+      --dark:        #1A1015;
+      --dark-mid:    #2D1F24;
+      --gold:        #C9A84C;
+      --text:        #2C1F24;
+      --muted:       #7A5E65;
+      --font-d: 'Cormorant Garamond', serif;
+      --font-b: 'DM Sans', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-b);
+      background: #fff;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      .no-print { display: none !important; }
+      .slide { page-break-after: always; break-after: page; }
+      .slide:last-child { page-break-after: avoid; }
+      body { font-size: 13px; }
+    }
+
+    /* ── NAV BAR ── */
+    .nav-bar {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(26,16,21,0.95);
+      backdrop-filter: blur(12px);
+      z-index: 999;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 2rem;
+      border-bottom: 1px solid rgba(196,131,138,0.2);
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-family: var(--font-d); font-size: 1.1rem;
+      font-weight: 600; color: white;
+    }
+
+    .nav-brand img { width: 36px; height: 36px; object-fit: contain; }
+
+    .nav-slides {
+      display: flex; gap: 0.4rem; flex-wrap: wrap;
+    }
+
+    .nav-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      cursor: pointer; border: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .nav-dot.active { background: var(--rose); transform: scale(1.4); }
+    .nav-dot:hover  { background: rgba(255,255,255,0.6); }
+
+    .nav-actions { display: flex; gap: 0.75rem; }
+
+    .btn-sm {
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      font-family: var(--font-b);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; border: none;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+
+    .btn-print {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white;
+    }
+
+    .btn-print:hover { background: rgba(255,255,255,0.2); }
+
+    .btn-primary-sm {
+      background: var(--bordeaux);
+      color: white;
+    }
+
+    .btn-primary-sm:hover {
+      background: #7d3449;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(107,45,62,0.4);
+    }
+
+    /* ── SLIDE BASE ── */
+    .slide {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      width: 100%;
+    }
+
+    /* ════════════════════════════════
+       SLIDE 1 — CAPA
+    ════════════════════════════════ */
+    .slide-capa {
+      background: var(--dark);
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .capa-bg {
+      position: absolute; inset: 0;
+      background: url('assets/hero.jpg') center/cover no-repeat;
+      opacity: 0.25;
+    }
+
+    .capa-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(26,16,21,0.97) 0%, rgba(107,45,62,0.5) 100%);
+    }
+
+    .capa-content {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .capa-logo {
+      width: 100px; height: 100px;
+      object-fit: contain;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 4px 24px rgba(196,131,138,0.3));
+    }
+
+    .capa-eyebrow {
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+
+    .capa-eyebrow::before, .capa-eyebrow::after {
+      content: ''; width: 40px; height: 1px; background: var(--rose);
+    }
+
+    .capa-title {
+      font-family: var(--font-d);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300; color: white;
+      line-height: 1.1; margin-bottom: 0.75rem;
+    }
+
+    .capa-subtitle {
+      font-family: var(--font-d);
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--rose-lt); font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+
+    .capa-meta {
+      display: flex; gap: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 2rem; margin-top: 1rem;
+    }
+
+    .capa-meta-item { text-align: center; }
+
+    .capa-meta-item .label {
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .capa-meta-item .value {
+      font-family: var(--font-d); font-size: 1rem;
+      color: white; font-weight: 400;
+    }
+
+    /* ════════════════════════════════
+       SLIDE 2 — CONTEXTO
+    ════════════════════════════════ */
+    .slide-cream { background: var(--cream); }
+
+    .slide-header { margin-bottom: 3rem; }
+
+    .slide-num {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 0.5rem; display: block;
+    }
+
+    .slide-title {
+      font-family: var(--font-d);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400; line-height: 1.15;
+      color: var(--text);
+    }
+
+    .slide-title em { color: var(--bordeaux); font-style: italic; }
+
+    .slide-desc {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 600px; margin-top: 0.75rem;
+      font-weight: 300; line-height: 1.7;
+    }
+
+    /* Problem/opportunity cards */
+    .card-grid-2 {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+
+    .card-grid-3 {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+
+    .card-grid-4 {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 20px rgba(107,45,62,0.08);
+      border: 1px solid rgba(196,131,138,0.12);
+    }
+
+    .card-dark {
+      background: var(--dark-mid);
+      border-color: rgba(196,131,138,0.15);
+    }
+
+    .card-bordeaux {
+      background: var(--bordeaux);
+    }
+
+    .card-icon {
+      font-size: 2rem; margin-bottom: 0.875rem; display: block;
+    }
+
+    .card-title {
+      font-family: var(--font-d); font-size: 1.2rem;
+      font-weight: 600; margin-bottom: 0.5rem;
+    }
+
+    .card-dark .card-title,
+    .card-bordeaux .card-title { color: white; }
+
+    .card-text {
+      font-size: 0.875rem; line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .card-dark .card-text { color: rgba(255,255,255,0.55); }
+    .card-bordeaux .card-text { color: rgba(255,255,255,0.8); }
+
+    /* ════════════════════════════════
+       SLIDE 3 — SOLUÇÃO (VISÃO GERAL)
+    ════════════════════════════════ */
+    .slide-dark { background: var(--dark); }
+
+    .mockup-img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+
+    .solution-grid {
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 4rem; align-items: center;
+    }
+
+    .solution-text .slide-title { color: white; }
+    .solution-text .slide-desc  { color: rgba(255,255,255,0.55); }
+
+    .feature-list {
+      list-style: none;
+      margin-top: 2rem;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+
+    .feature-list li {
+      display: flex; align-items: flex-start; gap: 0.875rem;
+    }
+
+    .feature-check {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: rgba(196,131,138,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: var(--rose-lt);
+      flex-shrink: 0; margin-top: 2px;
+    }
+
+    .feature-text { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+    .feature-text strong { color: white; display: block; font-size: 0.95rem; }
+
+    /* ════════════════════════════════
+       SLIDE 4 — FASES
+    ════════════════════════════════ */
+    .phase-list {
+      display: flex; flex-direction: column; gap: 0;
+      margin-top: 2.5rem;
+    }
+
+    .phase-item {
+      display: grid; grid-template-columns: 60px 1fr;
+      gap: 0;
+      position: relative;
+    }
+
+    .phase-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 29px; top: 50px;
+      width: 2px;
+      height: calc(100% - 10px);
+      background: linear-gradient(180deg, var(--rose) 0%, rgba(196,131,138,0.1) 100%);
+    }
+
+    .phase-num-col {
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: 0.25rem;
+    }
+
+    .phase-bubble {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d); font-size: 1.1rem;
+      font-weight: 600; flex-shrink: 0;
+    }
+
+    .phase-bubble.active   { background: var(--bordeaux); color: white; }
+    .phase-bubble.planned  { background: rgba(107,45,62,0.12); color: var(--bordeaux); border: 2px dashed var(--rose); }
+
+    .phase-body {
+      padding: 0 0 2rem 1.25rem;
+    }
+
+    .phase-tag {
+      display: inline-block;
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 0.2rem 0.7rem; border-radius: 999px;
+      margin-bottom: 0.4rem;
+    }
+
+    .tag-done    { background: rgba(107,45,62,0.1); color: var(--bordeaux); }
+    .tag-next    { background: rgba(201,168,76,0.12); color: #a07b20; }
+    .tag-future  { background: rgba(0,0,0,0.05); color: var(--muted); }
+
+    .phase-name {
+      font-family: var(--font-d); font-size: 1.3rem;
+      font-weight: 600; color: var(--text); margin-bottom: 0.35rem;
+    }
+
+    .phase-desc {
+      font-size: 0.855rem; color: var(--muted);
+      line-height: 1.6; margin-bottom: 0.5rem;
+    }
+
+    .phase-items {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+
+    .phase-pill {
+      font-size: 0.7rem; font-weight: 500;
+      background: var(--rose-pale);
+      color: var(--bordeaux);
+      border-radius: 999px;
+      padding: 0.2rem 0.75rem;
+    }
+
+    /* ════════════════════════════════
+       SLIDE 5 — MÓDULOS / FUNCIONALIDADES
+    ════════════════════════════════ */
+    .module-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+
+    .module-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid rgba(196,131,138,0.15);
+      box-shadow: 0 2px 16px rgba(107,45,62,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .module-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(107,45,62,0.14);
+    }
+
+    .module-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 0.875rem;
+    }
+
+    .icon-bordeaux { background: rgba(107,45,62,0.1); }
+    .icon-rose     { background: rgba(196,131,138,0.15); }
+    .icon-gold     { background: rgba(201,168,76,0.12); }
+    .icon-dark     { background: rgba(26,16,21,0.08); }
+    .icon-green    { background: rgba(52,168,83,0.1); }
+    .icon-blue     { background: rgba(66,133,244,0.1); }
+
+    .module-title {
+      font-family: var(--font-d); font-size: 1.1rem;
+      font-weight: 600; color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .module-text {
+      font-size: 0.8rem; color: var(--muted); line-height: 1.6;
+    }
+
+    .module-features {
+      list-style: none; margin-top: 0.75rem;
+      display: flex; flex-direction: column; gap: 0.3rem;
+    }
+
+    .module-features li {
+      font-size: 0.75rem; color: var(--muted);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+
+    .module-features li::before {
+      content: '›'; color: var(--rose); font-weight: 700;
+    }
+
+    /* ════════════════════════════════
+       SLIDE 6 — SEGURANÇA
+    ════════════════════════════════ */
+    .security-grid {
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      gap: 3rem; align-items: start; margin-top: 2.5rem;
+    }
+
+    .level-card {
+      border-radius: 16px; padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .level-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+
+    .level-master  { background: rgba(107,45,62,0.08); border: 1px solid rgba(107,45,62,0.2); }
+    .level-sup     { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); }
+    .level-op      { background: rgba(26,16,21,0.05); border: 1px solid rgba(26,16,21,0.12); }
+
+    .level-name  { font-family: var(--font-d); font-size: 1.05rem; font-weight: 600; }
+    .level-perms { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+
+    .perm-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .perm-table th {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); padding: 0.5rem 0.75rem;
+      text-align: left; border-bottom: 2px solid var(--rose-pale);
+    }
+
+    .perm-table td {
+      font-size: 0.8rem; padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--rose-pale);
+      vertical-align: middle;
+    }
+
+    .perm-table tr:last-child td { border-bottom: none; }
+    .perm-table tr:hover td { background: var(--rose-pale); }
+
+    .perm-check { color: var(--bordeaux); font-size: 1rem; }
+    .perm-x     { color: #ddd; font-size: 1rem; }
+    .perm-key   { color: var(--gold); font-size: 0.9rem; }
+
+    /* ════════════════════════════════
+       SLIDE 7 — TECH
+    ════════════════════════════════ */
+    .tech-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.1rem; margin-top: 2.5rem;
+    }
+
+    .tech-card {
+      background: white; border-radius: 14px; padding: 1.25rem;
+      text-align: center;
+      border: 1px solid rgba(196,131,138,0.12);
+      box-shadow: 0 2px 12px rgba(107,45,62,0.06);
+    }
+
+    .tech-emoji { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+    .tech-name  { font-family: var(--font-d); font-size: 1rem; font-weight: 600; }
+    .tech-role  { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+
+    .why-box {
+      background: linear-gradient(135deg, var(--bordeaux), #8B3D52);
+      border-radius: 16px; padding: 1.75rem;
+      margin-top: 2rem; color: white;
+    }
+
+    .why-title { font-family: var(--font-d); font-size: 1.3rem; margin-bottom: 0.75rem; }
+    .why-text  { font-size: 0.875rem; line-height: 1.7; color: rgba(255,255,255,0.8); }
+
+    /* ════════════════════════════════
+       SLIDE 8 — INVESTIMENTO
+    ════════════════════════════════ */
+    .invest-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 1rem; margin-top: 2.5rem;
+    }
+
+    .invest-card {
+      border-radius: 16px; padding: 1.5rem 1.25rem;
+      text-align: center; border: 2px solid transparent;
+      transition: all 0.2s;
+      display: flex; flex-direction: column;
+      background: white;
+      box-shadow: 0 2px 16px rgba(107,45,62,0.06);
+    }
+
+    .invest-card.highlight {
+      border-color: var(--bordeaux);
+      background: linear-gradient(180deg, rgba(107,45,62,0.04) 0%, white 100%);
+    }
+
+    .invest-phase-num {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 0.3rem;
+    }
+
+    .invest-phase-name {
+      font-family: var(--font-d); font-size: 1rem;
+      font-weight: 600; color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .invest-prazo {
+      font-size: 0.72rem; color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .invest-price {
+      font-family: var(--font-d); font-size: 1.6rem;
+      font-weight: 600; color: var(--bordeaux);
+      margin-bottom: 0.2rem;
+    }
+
+    .invest-note { font-size: 0.7rem; color: var(--muted); }
+
+    .invest-badge {
+      background: var(--bordeaux); color: white;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 999px;
+      margin-bottom: 0.75rem; display: inline-block;
+    }
+
+    .invest-total {
+      background: var(--dark);
+      border-radius: 16px; padding: 1.5rem 2rem;
+      margin-top: 1.5rem;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .invest-total-label { color: rgba(255,255,255,0.55); font-size: 0.85rem; }
+    .invest-total-price {
+      font-family: var(--font-d); font-size: 2.2rem;
+      color: white; font-weight: 300;
+    }
+
+    .invest-total-price span { color: var(--rose); }
+
+    .invest-total-note { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
+    /* ════════════════════════════════
+       SLIDE 9 — TIMELINE
+    ════════════════════════════════ */
+    .timeline {
+      margin-top: 2.5rem; position: relative;
+      padding-top: 1rem;
+    }
+
+    .timeline-axis {
+      position: absolute; top: 48px; left: 0; right: 0;
+      height: 3px; background: var(--rose-pale);
+      border-radius: 2px;
+    }
+
+    .timeline-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem; position: relative;
+    }
+
+    .timeline-item { text-align: center; padding-top: 0; }
+
+    .timeline-dot-wrap {
+      display: flex; align-items: center; justify-content: center;
+      padding-bottom: 1rem; position: relative;
+    }
+
+    .timeline-dot {
+      width: 20px; height: 20px; border-radius: 50%;
+      border: 3px solid var(--rose-pale);
+      background: white; z-index: 1; position: relative;
+    }
+
+    .timeline-dot.done { background: var(--bordeaux); border-color: var(--bordeaux); }
+    .timeline-dot.current { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 0 4px rgba(201,168,76,0.2); }
+
+    .timeline-num {
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 0.3rem;
+    }
+
+    .timeline-name {
+      font-family: var(--font-d); font-size: 0.95rem;
+      font-weight: 600; color: var(--text); margin-bottom: 0.2rem;
+    }
+
+    .timeline-prazo {
+      font-size: 0.72rem; color: var(--muted);
+    }
+
+    .timeline-weeks {
+      display: flex; gap: 4px; justify-content: center; margin-top: 0.5rem;
+    }
+
+    .week-bar {
+      height: 6px; border-radius: 3px; background: var(--rose-pale);
+    }
+
+    .week-bar.filled { background: var(--bordeaux); }
+    .week-bar.current-fill { background: var(--gold); }
+
+    /* ════════════════════════════════
+       SLIDE 10 — PRÓXIMOS PASSOS
+    ════════════════════════════════ */
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+
+    .step-card {
+      background: white; border-radius: 16px; padding: 1.75rem;
+      border: 1px solid rgba(196,131,138,0.15);
+      box-shadow: 0 2px 16px rgba(107,45,62,0.06);
+      position: relative;
+    }
+
+    .step-number {
+      position: absolute; top: -16px; left: 1.75rem;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--bordeaux); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d); font-size: 1rem; font-weight: 600;
+    }
+
+    .step-title {
+      font-family: var(--font-d); font-size: 1.15rem;
+      font-weight: 600; margin: 0.75rem 0 0.5rem;
+    }
+
+    .step-text { font-size: 0.855rem; color: var(--muted); line-height: 1.6; }
+
+    /* ════════════════════════════════
+       SLIDE 11 — ENCERRAMENTO
+    ════════════════════════════════ */
+    .slide-closing {
+      background: var(--bordeaux);
+      position: relative; overflow: hidden;
+    }
+
+    .closing-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .c1 { width: 600px; height: 600px; bottom: -300px; right: -200px; }
+    .c2 { width: 300px; height: 300px; top: -100px; left: -100px; }
+
+    .closing-content {
+      position: relative; z-index: 2;
+      text-align: center; max-width: 700px; margin: 0 auto;
+    }
+
+    .closing-logo {
+      width: 80px; height: 80px;
+      object-fit: contain; margin-bottom: 1.5rem;
+      filter: brightness(10);
+    }
+
+    .closing-title {
+      font-family: var(--font-d); font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 300; color: white;
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+
+    .closing-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.7);
+      margin-bottom: 2.5rem; line-height: 1.7;
+    }
+
+    .closing-contacts {
+      display: flex; justify-content: center;
+      gap: 2rem; flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.3rem;
+    }
+
+    .contact-label {
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .contact-value {
+      font-family: var(--font-d); font-size: 1.1rem;
+      color: white;
+    }
+
+    /* ── UTILITIES ── */
+    .text-rose     { color: var(--rose); }
+    .text-bordeaux { color: var(--bordeaux); }
+    .text-gold     { color: var(--gold); }
+    .text-white    { color: white; }
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+
+    /* ── SLIDE SECTION LABEL ── */
+    .section-divider {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--rose-pale);
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(107,45,62,0.06), rgba(196,131,138,0.08));
+      border: 1px solid rgba(196,131,138,0.2);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .highlight-box.dark {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV BAR ══ -->
+<nav class="nav-bar no-print">
+  <div class="nav-brand">
+    <img src="assets/logo.png" alt="Logo" />
+    DePaula Fitness — Proposta
+  </div>
+  <div class="nav-slides" id="nav-dots"></div>
+  <div class="nav-actions">
+    <button class="btn-sm btn-print" onclick="window.print()">🖨️ Imprimir / PDF</button>
+    <a href="../../../1.LandingPage/index.html" target="_blank" class="btn-sm btn-primary-sm">🌐 Ver Site</a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 1 — CAPA
+══════════════════════════════════════════════════ -->
+<section class="slide slide-capa" data-slide="1" data-title="Capa">
+  <div class="capa-bg"></div>
+  <div class="capa-overlay"></div>
+  <div class="capa-content">
+    <img class="capa-logo" src="assets/logo.png" alt="DePaula Fitness Store"/>
+    <div class="capa-eyebrow">Proposta de Projeto Digital</div>
+    <h1 class="capa-title">DePaula<br/>Fitness Store</h1>
+    <p class="capa-subtitle">Da vitrine digital ao sistema de gestão completo</p>
+    <div class="capa-meta">
+      <div class="capa-meta-item">
+        <span class="label">Data</span>
+        <span class="value">Agosto · 2026</span>
+      </div>
+      <div class="capa-meta-item">
+        <span class="label">Versão</span>
+        <span class="value">1.0 — Fase 1 Entregue</span>
+      </div>
+      <div class="capa-meta-item">
+        <span class="label">Localização</span>
+        <span class="value">Campinas — SP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 2 — O DESAFIO
+══════════════════════════════════════════════════ -->
+<section class="slide slide-cream" data-slide="2" data-title="Desafio">
+  <div class="container">
+    <div class="slide-header">
+      <div class="section-divider">
+        <span class="slide-num">01 — O Desafio</span>
+      </div>
+      <h2 class="slide-title">O mercado fitness <em>exige presença digital</em></h2>
+      <p class="slide-desc">
+        A DePaula Fitness Store tem um produto de qualidade e um público fiel — 
+        mas hoje depende exclusivamente das redes sociais para vender e do controle manual para gerir o negócio.
+      </p>
+    </div>
+
+    <div class="card-grid-2">
+      <div class="card">
+        <span class="card-icon">📱</span>
+        <h3 class="card-title">Dependência do Instagram</h3>
+        <p class="card-text">
+          Sem um canal próprio, a loja fica refém do algoritmo. 
+          Mudanças na plataforma afetam diretamente as vendas. 
+          Um site próprio cria um canal de vendas independente e profissional.
+        </p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📋</span>
+        <h3 class="card-title">Gestão Manual e Imprecisa</h3>
+        <p class="card-text">
+          Controle de estoque em planilhas ou "de cabeça" gera erros, 
+          vendas de itens sem estoque e dificuldade de ver a lucratividade real do negócio.
+        </p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🛒</span>
+        <h3 class="card-title">Vendas Limitadas pela Logística</h3>
+        <p class="card-text">
+          Hoje o processo de compra é manual (DM + Pix + confirmação). 
+          Um e-commerce automatiza isso, permite mais vendas com menos esforço.
+        </p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🏆</span>
+        <h3 class="card-title">Concorrência com Grandes Marcas</h3>
+        <p class="card-text">
+          Track&Field, Alto Giro e Vestem têm sites robustos. 
+          Uma presença digital profissional posiciona a DePaula no mesmo nível de percepção de valor.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 3 — A SOLUÇÃO (VISÃO GERAL)
+══════════════════════════════════════════════════ -->
+<section class="slide slide-dark" data-slide="3" data-title="Solução">
+  <div class="container">
+    <div class="solution-grid">
+      <div class="solution-text">
+        <div class="section-divider" style="border-color:rgba(255,255,255,0.1)">
+          <span class="slide-num">02 — A Solução</span>
+        </div>
+        <h2 class="slide-title">Uma plataforma<br/><em style="color:var(--rose-lt)">completa e própria</em></h2>
+        <p class="slide-desc">
+          Desenvolvemos um ecossistema digital completo — desde a vitrine online 
+          até o sistema de gestão do negócio, tudo integrado e sob controle total da loja.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <div class="feature-check">🌐</div>
+            <div class="feature-text">
+              <strong>Site / E-commerce</strong>
+              Landing page + loja online com carrinho, catálogo e checkout
+            </div>
+          </li>
+          <li>
+            <div class="feature-check">📦</div>
+            <div class="feature-text">
+              <strong>Gestão de Estoque</strong>
+              Cardex, inventário, ponto de pedido e precificação automática
+            </div>
+          </li>
+          <li>
+            <div class="feature-check">👥</div>
+            <div class="feature-text">
+              <strong>CRM de Clientes</strong>
+              Cadastro, segmentação e mala direta por WhatsApp e e-mail
+            </div>
+          </li>
+          <li>
+            <div class="feature-check">💰</div>
+            <div class="feature-text">
+              <strong>Controle Financeiro</strong>
+              Receitas, despesas, lucratividade e dashboard de recebíveis
+            </div>
+          </li>
+          <li>
+            <div class="feature-check">🔐</div>
+            <div class="feature-text">
+              <strong>Segurança e Acessos</strong>
+              Controle granular por funcionário com 3 níveis hierárquicos
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <img class="mockup-img" src="assets/mockup.jpg" alt="Mockup do site DePaula Fitness" />
+        <div class="highlight-box dark" style="margin-top:1.25rem;">
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.6;">
+            ✦ O site já está construído e disponível para visualização. 
+            As demais funcionalidades serão desenvolvidas nas próximas fases.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 4 — FASES DO PROJETO
+══════════════════════════════════════════════════ -->
+<section class="slide slide-cream" data-slide="4" data-title="Fases">
+  <div class="container">
+    <div class="slide-header">
+      <div class="section-divider">
+        <span class="slide-num">03 — Fases do Projeto</span>
+      </div>
+      <h2 class="slide-title">Desenvolvido em <em>etapas claras</em></h2>
+      <p class="slide-desc">
+        Cada fase entrega valor imediato — você começa a usar desde a Fase 1.
+      </p>
+    </div>
+
+    <div class="phase-list">
+
+      <div class="phase-item">
+        <div class="phase-num-col">
+          <div class="phase-bubble active">1</div>
+        </div>
+        <div class="phase-body">
+          <span class="phase-tag tag-done">✅ Entregue</span>
+          <h3 class="phase-name">Landing Page + Vitrine Digital</h3>
+          <p class="phase-desc">
+            Site de apresentação da marca com produtos, categorias, avaliações, localização e integração com WhatsApp. 
+            Design premium, responsivo e preparado para virar e-commerce.
+          </p>
+          <div class="phase-items">
+            <span class="phase-pill">Hero Banner</span>
+            <span class="phase-pill">Grid de Produtos</span>
+            <span class="phase-pill">Categorias</span>
+            <span class="phase-pill">Depoimentos</span>
+            <span class="phase-pill">Instagram Feed</span>
+            <span class="phase-pill">Newsletter</span>
+            <span class="phase-pill">WhatsApp Float</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item">
+        <div class="phase-num-col">
+          <div class="phase-bubble planned">2</div>
+        </div>
+        <div class="phase-body">
+          <span class="phase-tag tag-next">🔜 Próxima Fase</span>
+          <h3 class="phase-name">Infraestrutura + Sistema de Segurança</h3>
+          <p class="phase-desc">
+            Backend em C# (ASP.NET Core), banco de dados PostgreSQL, 
+            painel administrativo e controle de acessos RBAC granular com 3 níveis.
+          </p>
+          <div class="phase-items">
+            <span class="phase-pill">Painel Admin</span>
+            <span class="phase-pill">Login / Autenticação</span>
+            <span class="phase-pill">Níveis: Operador · Supervisor · Master</span>
+            <span class="phase-pill">Controle por Tela</span>
+            <span class="phase-pill">Auditoria de Acessos</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item">
+        <div class="phase-num-col">
+          <div class="phase-bubble planned">3</div>
+        </div>
+        <div class="phase-body">
+          <span class="phase-tag tag-future">📦 Fase 3</span>
+          <h3 class="phase-name">Gestão de Estoque + Compras</h3>
+          <p class="phase-desc">
+            Controle completo de entradas e saídas, cardex automático, inventário, 
+            precificação por markup e alerta de estoque mínimo.
+          </p>
+          <div class="phase-items">
+            <span class="phase-pill">Cardex</span>
+            <span class="phase-pill">Inventário</span>
+            <span class="phase-pill">Ponto de Pedido</span>
+            <span class="phase-pill">Precificação</span>
+            <span class="phase-pill">Venda Negativa c/ Senha</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item">
+        <div class="phase-num-col">
+          <div class="phase-bubble planned">4</div>
+        </div>
+        <div class="phase-body">
+          <span class="phase-tag tag-future">👥 Fase 4</span>
+          <h3 class="phase-name">Mini CRM + Comunicação</h3>
+          <p class="phase-desc">
+            Cadastro de clientes, segmentação por tags, mala direta via WhatsApp Web e e-mail, 
+            histórico de compras e campanhas de aniversário.
+          </p>
+          <div class="phase-items">
+            <span class="phase-pill">Cadastro de Clientes</span>
+            <span class="phase-pill">Mala Direta WhatsApp</span>
+            <span class="phase-pill">Mala Direta E-mail</span>
+            <span class="phase-pill">Segmentação</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item">
+        <div class="phase-num-col">
+          <div class="phase-bubble planned">5</div>
+        </div>
+        <div class="phase-body">
+          <span class="phase-tag tag-future">💰 Fase 5</span>
+          <h3 class="phase-name">Financeiro + Dashboard Executivo</h3>
+          <p class="phase-desc">
+            Controle de receitas e despesas, lucratividade por produto, 
+            contas a receber/pagar e dashboard com previsão de recebíveis do mês.
+          </p>
+          <div class="phase-items">
+            <span class="phase-pill">DRE Simplificado</span>
+            <span class="phase-pill">Recebíveis</span>
+            <span class="phase-pill">Dashboard</span>
+            <span class="phase-pill">CMV Automático</span>
+            <span class="phase-pill">Relatórios</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 5 — FUNCIONALIDADES DETALHADAS
+══════════════════════════════════════════════════ -->
+<section class="slide" style="background:#fff" data-slide="5" data-title="Funcionalidades">
+  <div class="container">
+    <div class="slide-header">
+      <div class="section-divider">
+        <span class="slide-num">04 — Funcionalidades</span>
+      </div>
+      <h2 class="slide-title">Tudo que o negócio <em>precisa</em></h2>
+      <p class="slide-desc">Um sistema pensado do zero para a realidade de uma loja de moda fitness.</p>
+    </div>
+
+    <div class="module-grid">
+
+      <div class="module-card">
+        <div class="module-icon icon-bordeaux">🛍️</div>
+        <h3 class="module-title">E-commerce</h3>
+        <ul class="module-features">
+          <li>Catálogo com grade de tamanhos e cores</li>
+          <li>Carrinho e checkout integrado</li>
+          <li>Meios de pagamento (Pix, cartão)</li>
+          <li>Rastreamento de pedidos</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-dark">📦</div>
+        <h3 class="module-title">Estoque</h3>
+        <ul class="module-features">
+          <li>Entradas, saídas e ajustes</li>
+          <li>Cardex com custo médio</li>
+          <li>Inventário com aprovação</li>
+          <li>Alerta de estoque mínimo</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-rose">💰</div>
+        <h3 class="module-title">Financeiro</h3>
+        <ul class="module-features">
+          <li>Contas a receber e pagar</li>
+          <li>Lucratividade por produto</li>
+          <li>Dashboard de recebíveis</li>
+          <li>DRE simplificado</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-green">👥</div>
+        <h3 class="module-title">CRM</h3>
+        <ul class="module-features">
+          <li>Cadastro completo de clientes</li>
+          <li>Histórico de compras</li>
+          <li>Mala direta WhatsApp / e-mail</li>
+          <li>Segmentação por tags</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-bordeaux">🔐</div>
+        <h3 class="module-title">Segurança</h3>
+        <ul class="module-features">
+          <li>3 níveis: Operador / Supervisor / Master</li>
+          <li>Controle tela a tela por usuário</li>
+          <li>Log de auditoria completo</li>
+          <li>Venda negativa com senha autorizada</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-gold">📊</div>
+        <h3 class="module-title">Dashboard</h3>
+        <ul class="module-features">
+          <li>Faturamento diário / mensal</li>
+          <li>Top produtos mais vendidos</li>
+          <li>Previsão de recebíveis</li>
+          <li>Alertas em tempo real</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 6 — SEGURANÇA / RBAC
+══════════════════════════════════════════════════ -->
+<section class="slide slide-cream" data-slide="6" data-title="Segurança">
+  <div class="container">
+    <div class="slide-header">
+      <div class="section-divider">
+        <span class="slide-num">05 — Controle de Acesso</span>
+      </div>
+      <h2 class="slide-title">Cada funcionário vê <em>apenas o que precisa</em></h2>
+      <p class="slide-desc">
+        Sistema de permissões granular — você define o que cada pessoa pode ver e fazer, tela por tela.
+      </p>
+    </div>
+
+    <div class="security-grid">
+
+      <div>
+        <div class="level-card level-master">
+          <div class="level-icon">👑</div>
+          <div>
+            <div class="level-name">Master</div>
+            <div class="level-perms">Acesso total ao sistema, configurações e gestão de usuários</div>
+          </div>
+        </div>
+        <div class="level-card level-sup">
+          <div class="level-icon">🟡</div>
+          <div>
+            <div class="level-name">Supervisor</div>
+            <div class="level-perms">Relatórios, aprovações de inventário e venda negativa</div>
+          </div>
+        </div>
+        <div class="level-card level-op">
+          <div class="level-icon">🟢</div>
+          <div>
+            <div class="level-name">Operador</div>
+            <div class="level-perms">Acesso às telas autorizadas para sua função diária</div>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">
+            💡 <strong style="color:var(--bordeaux)">Controle granular:</strong> Além do nível base, 
+            é possível liberar ou bloquear telas individualmente para cada funcionário. 
+            Exemplo: um operador pode ter acesso à tela de entrada de estoque, 
+            mas não à precificação.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <table class="perm-table">
+          <thead>
+            <tr>
+              <th>Módulo</th>
+              <th>Operador</th>
+              <th>Supervisor</th>
+              <th>Master</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lançar Venda</td>
+              <td class="perm-check">✔</td>
+              <td class="perm-check">✔</td>
+              <td class="perm-check">✔</td>
+            </tr>
+            <tr>
+              <td>Entrada de Estoque</td>
+              <td class="perm-check">✔</td>
+              <td class="perm-check">✔</td>
+              <td class="perm-check">✔</td>
+            </tr>
+            <tr>
+              <td>Venda c/ Estoque Zero</td>
+              <td class="perm-x">✗</td>
+              <td class="perm-key">🔑</td>
+              <td class="perm-key">🔑</td>
+            </tr>
+            <tr>
+              <td>Aprovar Inventário</td>
+              <td class="perm-x">✗</td>
+              <td class="perm-check">✔</td>
+              <td class="perm-check">✔</td>
+            </tr>
+            <tr>
+              <td>Relatórios Financeiros</td>
+              <td class="perm-x">✗</td>
+              <td class="perm-check">✔</td>
+              <td class="perm-check">✔</td>
+            </tr>
+            <tr>
+              <td>Cadastrar Usuários</td>
+              <td class="perm-x">✗</td>
+              <td class="perm-x">✗</td>
+              <td class="perm-check">✔</td>
+            </tr>
+            <tr>
+              <td>Configurações do Sistema</td>
+              <td class="perm-x">✗</td>
+              <td class="perm-x">✗</td>
+              <td class="perm-check">✔</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.7rem;color:var(--muted);margin-top:0.5rem;">
+          🔑 = Requer senha de autorização no momento da ação
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 7 — TECNOLOGIA
+══════════════════════════════════════════════════ -->
+<section class="slide" style="background:#fff" data-slide="7" data-title="Tecnologia">
+  <div class="container">
+    <div class="slide-header">
+      <div class="section-divider">
+        <span class="slide-num">06 — Tecnologia</span>
+      </div>
+      <h2 class="slide-title">Construído com <em>tecnologia de ponta</em></h2>
+      <p class="slide-desc">Ferramentas enterprise usadas pelas maiores empresas do mundo — adaptadas para o seu negócio.</p>
+    </div>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <span class="tech-emoji">⚙️</span>
+        <div class="tech-name">C# / ASP.NET Core</div>
+        <div class="tech-role">Backend — Motor do sistema</div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-emoji">🗄️</span>
+        <div class="tech-name">PostgreSQL</div>
+        <div class="tech-role">Banco de dados — Alta consistência</div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-emoji">🖥️</span>
+        <div class="tech-name">Blazor / MVC</div>
+        <div class="tech-role">Painel Admin + Loja Online</div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-emoji">🌐</span>
+        <div class="tech-name">HTML / CSS / JS</div>
+        <div class="tech-role">Landing Page — já entregue</div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-emoji">🔐</span>
+        <div class="tech-name">ASP.NET Identity</div>
+        <div class="tech-role">Autenticação e RBAC</div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-emoji">☁️</span>
+        <div class="tech-name">SmartASP</div>
+        <div class="tech-role">Hospedagem — Servidor</div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-emoji">💬</span>
+        <div class="tech-name">WhatsApp Web API</div>
+        <div class="tech-role">Mala Direta integrada</div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-emoji">📧</span>
+        <div class="tech-name">SMTP / SendGrid</div>
+        <div class="tech-role">E-mail marketing</div>
+      </div>
+    </div>
+
+    <div class="why-box">
+      <h3 class="why-title">Por que essa tecnologia?</h3>
+      <p class="why-text">
+        C# + ASP.NET Core é a mesma stack usada por empresas como Stack Overflow, Microsoft e grandes bancos. 
+        Garante performance, segurança e escalabilidade — seu sistema cresce junto com o negócio. 
+        PostgreSQL é gratuito, robusto e ideal para e-commerce com alto volume de transações e 
+        necessidade de consistência de dados (estoque nunca fica desatualizado).
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 8 — INVESTIMENTO
+══════════════════════════════════════════════════ -->
+<section class="slide slide-cream" data-slide="8" data-title="Investimento">
+  <div class="container">
+    <div class="slide-header">
+      <div class="section-divider">
+        <span class="slide-num">07 — Investimento</span>
+      </div>
+      <h2 class="slide-title">Desenvolvimento por <em>fases</em></h2>
+      <p class="slide-desc">
+        Você investe conforme o projeto avança — sem surpresas e com entregas concretas em cada etapa.
+      </p>
+    </div>
+
+    <div class="invest-grid">
+      <div class="invest-card highlight">
+        <span class="invest-badge">✅ Entregue</span>
+        <div class="invest-phase-num">Fase 1</div>
+        <div class="invest-phase-name">Landing Page</div>
+        <div class="invest-prazo">1 semana · Design premium</div>
+        <div class="invest-price">A combinar</div>
+        <div class="invest-note">Site completo, responsivo e com imagens de produto</div>
+      </div>
+      <div class="invest-card">
+        <div class="invest-phase-num">Fase 2</div>
+        <div class="invest-phase-name">Infra + Segurança</div>
+        <div class="invest-prazo">2 semanas</div>
+        <div class="invest-price">A combinar</div>
+        <div class="invest-note">Backend, painel admin, RBAC, login</div>
+      </div>
+      <div class="invest-card">
+        <div class="invest-phase-num">Fase 3</div>
+        <div class="invest-phase-name">Estoque</div>
+        <div class="invest-prazo">3 semanas</div>
+        <div class="invest-price">A combinar</div>
+        <div class="invest-note">Cardex, inventário, compras, precificação</div>
+      </div>
+      <div class="invest-card">
+        <div class="invest-phase-num">Fase 4</div>
+        <div class="invest-phase-name">CRM</div>
+        <div class="invest-prazo">2 semanas</div>
+        <div class="invest-price">A combinar</div>
+        <div class="invest-note">Clientes, WhatsApp, e-mail</div>
+      </div>
+      <div class="invest-card">
+        <div class="invest-phase-num">Fase 5</div>
+        <div class="invest-phase-name">Financeiro</div>
+        <div class="invest-prazo">3 semanas</div>
+        <div class="invest-price">A combinar</div>
+        <div class="invest-note">Dashboard, DRE, recebíveis</div>
+      </div>
+    </div>
+
+    <div class="invest-total">
+      <div>
+        <div class="invest-total-label">Prazo total estimado (todas as fases)</div>
+        <div class="invest-total-price">~<span>11 semanas</span></div>
+      </div>
+      <div>
+        <div class="invest-total-label">Investimento do projeto</div>
+        <div class="invest-total-price"><span>A definir</span></div>
+      </div>
+      <div>
+        <div class="invest-total-note">
+          ✦ Valores e cronograma a serem acordados com o cliente<br/>
+          ✦ Pagamento por fase — você só investe no que aprovou<br/>
+          ✦ Suporte incluído durante o desenvolvimento
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 9 — CRONOGRAMA
+══════════════════════════════════════════════════ -->
+<section class="slide" style="background:#fff" data-slide="9" data-title="Cronograma">
+  <div class="container">
+    <div class="slide-header">
+      <div class="section-divider">
+        <span class="slide-num">08 — Cronograma</span>
+      </div>
+      <h2 class="slide-title">Da ideia ao sistema <em>em 11 semanas</em></h2>
+      <p class="slide-desc">
+        Cada fase entrega valor de forma independente. A Fase 1 já foi concluída.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-axis"></div>
+      <div class="timeline-grid">
+
+        <div class="timeline-item">
+          <div class="timeline-dot-wrap">
+            <div class="timeline-dot done"></div>
+          </div>
+          <div class="timeline-num">Fase 1</div>
+          <div class="timeline-name">Landing Page</div>
+          <div class="timeline-prazo">1 semana · ✅ Feito</div>
+          <div class="timeline-weeks">
+            <div class="week-bar filled" style="width:30px"></div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot-wrap">
+            <div class="timeline-dot current"></div>
+          </div>
+          <div class="timeline-num">Fase 2</div>
+          <div class="timeline-name">Infra + Auth</div>
+          <div class="timeline-prazo">2 semanas</div>
+          <div class="timeline-weeks">
+            <div class="week-bar" style="width:30px"></div>
+            <div class="week-bar" style="width:30px"></div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot-wrap">
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-num">Fase 3</div>
+          <div class="timeline-name">Estoque</div>
+          <div class="timeline-prazo">3 semanas</div>
+          <div class="timeline-weeks">
+            <div class="week-bar" style="width:20px"></div>
+            <div class="week-bar" style="width:20px"></div>
+            <div class="week-bar" style="width:20px"></div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot-wrap">
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-num">Fase 4</div>
+          <div class="timeline-name">CRM</div>
+          <div class="timeline-prazo">2 semanas</div>
+          <div class="timeline-weeks">
+            <div class="week-bar" style="width:30px"></div>
+            <div class="week-bar" style="width:30px"></div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot-wrap">
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-num">Fase 5</div>
+          <div class="timeline-name">Financeiro</div>
+          <div class="timeline-prazo">3 semanas</div>
+          <div class="timeline-weeks">
+            <div class="week-bar" style="width:20px"></div>
+            <div class="week-bar" style="width:20px"></div>
+            <div class="week-bar" style="width:20px"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card-grid-3" style="margin-top:3rem;">
+      <div class="card" style="text-align:center;">
+        <span class="card-icon">🚀</span>
+        <h4 class="card-title" style="font-size:1rem;">Entrega incremental</h4>
+        <p class="card-text">Você usa e valida cada fase antes de aprovar a próxima</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <span class="card-icon">💬</span>
+        <h4 class="card-title" style="font-size:1rem;">Comunicação direta</h4>
+        <p class="card-text">Reuniões de alinhamento ao final de cada fase</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <span class="card-icon">🔄</span>
+        <h4 class="card-title" style="font-size:1rem;">Ajustes incluídos</h4>
+        <p class="card-text">Cada fase inclui rodada de ajustes sem custo adicional</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 10 — PRÓXIMOS PASSOS
+══════════════════════════════════════════════════ -->
+<section class="slide slide-cream" data-slide="10" data-title="Próximos Passos">
+  <div class="container">
+    <div class="slide-header">
+      <div class="section-divider">
+        <span class="slide-num">09 — Próximos Passos</span>
+      </div>
+      <h2 class="slide-title">Vamos <em>começar?</em></h2>
+      <p class="slide-desc">
+        O site já está pronto. Para darmos sequência ao projeto, o caminho é simples.
+      </p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3 class="step-title">Aprovação da Proposta</h3>
+        <p class="step-text">
+          Revisamos juntos esta apresentação, tiramos dúvidas sobre escopo, 
+          prazos e valores. Definimos as condições de pagamento e assinamos a proposta.
+        </p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3 class="step-title">Publicação do Site (Fase 1)</h3>
+        <p class="step-text">
+          Subimos a landing page online (com domínio próprio ou link provisório), 
+          atualizamos o logo e o número de telefone, e o site entra no ar em menos de 24h.
+        </p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3 class="step-title">Início da Fase 2</h3>
+        <p class="step-text">
+          Iniciamos o desenvolvimento do painel administrativo, 
+          banco de dados e sistema de autenticação — a base para todos os módulos seguintes.
+        </p>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:2.5rem;">
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div style="flex:1;min-width:200px;">
+          <p style="font-weight:600;color:var(--bordeaux);margin-bottom:0.3rem;">✦ O site já existe — você pode ver agora</p>
+          <p style="font-size:0.85rem;color:var(--muted);">
+            Abra o navegador e acesse o link abaixo para ver o site funcionando. 
+            Pode compartilhar com quem quiser.
+          </p>
+        </div>
+        <a href="../../../1.LandingPage/index.html" target="_blank"
+           class="btn-sm btn-primary-sm" style="font-size:0.75rem;padding:0.6rem 1.4rem;">
+          🌐 Abrir Site
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 11 — ENCERRAMENTO
+══════════════════════════════════════════════════ -->
+<section class="slide slide-closing" data-slide="11" data-title="Contato">
+  <div class="closing-circle c1"></div>
+  <div class="closing-circle c2"></div>
+  <div class="container">
+    <div class="closing-content">
+      <img class="closing-logo" src="assets/logo.png" alt="DePaula Fitness"/>
+      <h2 class="closing-title">Juntos vamos levar a<br/><em style="font-style:italic;">DePaula Fitness</em><br/>para o próximo nível</h2>
+      <p class="closing-sub">
+        Da academia ao digital — construindo a plataforma que sua marca merece.
+      </p>
+      <div class="closing-contacts">
+        <div class="contact-item">
+          <span class="contact-label">Instagram</span>
+          <span class="contact-value">@depaulafitness_</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-value">(19) 98140-0977</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Endereço</span>
+          <span class="contact-value">Av. Estados Unidos, 445 · Campinas/SP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ JAVASCRIPT ══ -->
+<script>
+  // Build nav dots
+  const slides = document.querySelectorAll('[data-slide]');
+  const dotsContainer = document.getElementById('nav-dots');
+
+  slides.forEach((slide, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.title = slide.dataset.title || `Slide ${i + 1}`;
+    dot.addEventListener('click', () => {
+      slide.scrollIntoView({ behavior: 'smooth' });
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  // Update active dot on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(slides).indexOf(entry.target);
+        document.querySelectorAll('.nav-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === idx);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(s => observer.observe(s));
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const current = Array.from(slides).findIndex(s => {
+      const rect = s.getBoundingClientRect();
+      return rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+    });
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      const next = slides[Math.min(current + 1, slides.length - 1)];
+      next?.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      const prev = slides[Math.max(current - 1, 0)];
+      prev?.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>
+
+</body>
+</html>

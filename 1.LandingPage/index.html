@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DePaula Fitness Store — Moda fitness que te acompanha. Leggings, tops, conjuntos e shorts premium para quem vive em movimento. Campinas/SP, enviamos para todo o Brasil." />
+  <meta name="keywords" content="moda fitness, legging, conjunto fitness, roupa de academia, campinas, depaula fitness" />
+  <meta property="og:title" content="DePaula Fitness Store | Moda Fitness Premium" />
+  <meta property="og:description" content="Moda fitness que te acompanha. Peças premium para quem não para." />
+  <meta property="og:type" content="website" />
+  <title>DePaula Fitness Store | Moda Fitness que te Acompanha</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.png" />
+  <meta name="theme-color" content="#6B2D3E" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Phosphor Icons (lightweight, no JS dependency) -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════════ -->
+<header id="header">
+  <div class="container">
+    <nav class="nav-inner">
+
+      <!-- Logo -->
+      <a href="#" class="nav-logo" aria-label="DePaula Fitness Store">
+        <img src="assets/images/logo.png" alt="DePaula Fitness Store Logo" width="52" height="52" />
+        <div class="nav-logo-text">
+          <span class="brand-name">DePaula</span>
+          <span class="brand-sub">Fitness Store</span>
+        </div>
+      </a>
+
+      <!-- Nav Links -->
+      <ul class="nav-links" role="navigation" aria-label="Menu principal">
+        <li><a href="#categorias">Categorias</a></li>
+        <li><a href="#lancamentos">Lançamentos</a></li>
+        <li><a href="#sobre">A Marca</a></li>
+        <li><a href="#depoimentos">Avaliações</a></li>
+        <li><a href="#localizacao">Onde Estamos</a></li>
+      </ul>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <a href="https://www.instagram.com/depaulafitness_" target="_blank" rel="noopener"
+           class="nav-icon-btn" aria-label="Instagram">
+          <i class="ph ph-instagram-logo"></i>
+        </a>
+        <button class="nav-icon-btn" id="cart-btn" aria-label="Carrinho de compras">
+          <i class="ph ph-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════
+     MOBILE MENU
+════════════════════════════════════════════════════ -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu mobile">
+  <div class="mobile-menu-overlay" id="menu-overlay"></div>
+  <div class="mobile-menu-panel">
+    <div class="mobile-menu-header">
+      <div class="nav-logo">
+        <img src="assets/images/logo.png" alt="DePaula" width="40" height="40" />
+        <div class="nav-logo-text">
+          <span class="brand-name">DePaula</span>
+          <span class="brand-sub">Fitness Store</span>
+        </div>
+      </div>
+      <button class="mobile-menu-close" id="menu-close" aria-label="Fechar menu">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#categorias">Categorias <i class="ph ph-arrow-right"></i></a></li>
+      <li><a href="#lancamentos">Lançamentos <i class="ph ph-arrow-right"></i></a></li>
+      <li><a href="#sobre">A Marca <i class="ph ph-arrow-right"></i></a></li>
+      <li><a href="#depoimentos">Avaliações <i class="ph ph-arrow-right"></i></a></li>
+      <li><a href="#localizacao">Onde Estamos <i class="ph ph-arrow-right"></i></a></li>
+    </ul>
+    <a href="https://wa.me/5519981400977?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20DePaula%20Fitness!" 
+       target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">
+      <i class="ph ph-whatsapp-logo"></i> Falar no WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════ -->
+<section id="hero" aria-label="Banner principal">
+  <div class="hero-bg">
+    <img src="assets/images/hero_banner.jpg" 
+         alt="Mulher confiante usando conjunto fitness DePaula" 
+         fetchpriority="high" />
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="line"></span>
+        <span class="label" style="color:var(--clr-rose-lt)">Nova Coleção 2026</span>
+      </div>
+
+      <h1 class="display-1 hero-title">
+        Moda <em>fitness</em><br />que te<br />acompanha
+      </h1>
+
+      <p class="body-lg hero-desc">
+        Peças premium pensadas para quem não para — da academia ao dia a dia. 
+        Qualidade, estilo e conforto em cada detalhe.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#lancamentos" class="btn btn-primary btn-lg" id="hero-cta-shop">
+          <i class="ph ph-sparkle"></i> Ver Lançamentos
+        </a>
+        <a href="https://wa.me/5519981400977?text=Olá!%20Vi%20o%20site%20e%20quero%20saber%20mais!" 
+           target="_blank" rel="noopener"
+           class="btn btn-secondary btn-lg" id="hero-cta-whatsapp">
+          <i class="ph ph-whatsapp-logo"></i> Falar Conosco
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats strip -->
+  <div class="hero-badge-strip">
+    <div class="hero-badge-item">
+      <span class="number" data-target="400" data-suffix="+">400+</span>
+      <span class="text">Clientes Felizes</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-badge-item">
+      <span class="number" data-target="50" data-suffix="+">50+</span>
+      <span class="text">Modelos Exclusivos</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-badge-item">
+      <span class="number">🇧🇷</span>
+      <span class="text">Envio p/ Todo Brasil</span>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     STRIP MARQUEE
+════════════════════════════════════════════════════ -->
+<div id="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span>Frete grátis acima de R$199</span>
+    <span>Novas peças toda semana</span>
+    <span>Enviamos para todo o Brasil</span>
+    <span>Tecido premium com compressão</span>
+    <span>Troca fácil e sem burocracia</span>
+    <span>Parcele em até 6x sem juros</span>
+    <!-- Duplicate for seamless loop -->
+    <span>Frete grátis acima de R$199</span>
+    <span>Novas peças toda semana</span>
+    <span>Enviamos para todo o Brasil</span>
+    <span>Tecido premium com compressão</span>
+    <span>Troca fácil e sem burocracia</span>
+    <span>Parcele em até 6x sem juros</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     CATEGORIAS
+════════════════════════════════════════════════════ -->
+<section id="categorias" aria-label="Categorias de produtos">
+  <div class="container">
+
+    <header class="section-header reveal">
+      <span class="label">Explore</span>
+      <h2 class="display-3">Nossas Categorias</h2>
+      <p class="body-lg" style="color:var(--clr-text-muted);margin-top:0.75rem;">
+        Do treino ao cotidiano — encontre a peça perfeita para cada momento
+      </p>
+    </header>
+
+    <div class="categorias-grid" data-stagger>
+
+      <!-- Featured: Conjuntos -->
+      <article class="categoria-card reveal">
+        <img class="categoria-card-img" 
+             src="assets/images/banner_lancamentos.jpg" 
+             alt="Conjuntos fitness" loading="lazy" />
+        <div class="categoria-card-overlay"></div>
+        <div class="categoria-card-content">
+          <p class="label">Mais Vendidos</p>
+          <h3 class="heading-1">Conjuntos<br/>Completos</h3>
+          <span class="categoria-tag">
+            <i class="ph ph-arrow-right"></i> Ver Coleção
+          </span>
+        </div>
+      </article>
+
+      <!-- Leggings -->
+      <article class="categoria-card reveal reveal-delay-1">
+        <img class="categoria-card-img" 
+             src="assets/images/product_legging.jpg" 
+             alt="Leggings premium" loading="lazy" />
+        <div class="categoria-card-overlay"></div>
+        <div class="categoria-card-content">
+          <p class="label">Alta Compressão</p>
+          <h3 class="heading-1">Leggings</h3>
+          <span class="categoria-tag">
+            <i class="ph ph-arrow-right"></i> Ver Coleção
+          </span>
+        </div>
+      </article>
+
+      <!-- Tops -->
+      <article class="categoria-card reveal reveal-delay-2">
+        <img class="categoria-card-img" 
+             src="assets/images/product_top.jpg" 
+             alt="Tops e sports bras" loading="lazy" />
+        <div class="categoria-card-overlay"></div>
+        <div class="categoria-card-content">
+          <p class="label">Suporte Premium</p>
+          <h3 class="heading-1">Tops & Bras</h3>
+          <span class="categoria-tag">
+            <i class="ph ph-arrow-right"></i> Ver Coleção
+          </span>
+        </div>
+      </article>
+
+      <!-- Shorts -->
+      <article class="categoria-card reveal reveal-delay-3">
+        <img class="categoria-card-img" 
+             src="assets/images/product_shorts.jpg" 
+             alt="Shorts fitness" loading="lazy" />
+        <div class="categoria-card-overlay"></div>
+        <div class="categoria-card-content">
+          <p class="label">Liberdade de Movimento</p>
+          <h3 class="heading-1">Shorts</h3>
+          <span class="categoria-tag">
+            <i class="ph ph-arrow-right"></i> Ver Coleção
+          </span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     LANÇAMENTOS / PRODUTOS
+════════════════════════════════════════════════════ -->
+<section id="lancamentos" aria-label="Últimos lançamentos">
+  <div class="container">
+
+    <div class="lancamentos-header">
+      <div>
+        <div class="section-eyebrow reveal">
+          <span class="label" style="color:var(--clr-rose)">Recém chegou</span>
+        </div>
+        <h2 class="display-3 reveal reveal-delay-1">Últimos Lançamentos</h2>
+      </div>
+      <a href="#" class="btn btn-outline reveal reveal-delay-2">
+        Ver todos <i class="ph ph-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="produtos-grid">
+
+      <!-- Produto 1 -->
+      <article class="produto-card reveal">
+        <div class="produto-card-img-wrap">
+          <img class="produto-card-img" 
+               src="assets/images/product_legging.jpg" 
+               alt="Legging Marsala Sculpt" loading="lazy" />
+          <div class="produto-card-badges">
+            <span class="badge badge-new">Novo</span>
+          </div>
+          <div class="produto-card-actions">
+            <button class="produto-action-btn btn-wishlist" aria-label="Favoritar" title="Adicionar aos favoritos">🤍</button>
+            <button class="produto-action-btn" aria-label="Visualizar" title="Visualização rápida">
+              <i class="ph ph-eye"></i>
+            </button>
+          </div>
+          <button class="produto-add-cart btn-add-cart" aria-label="Adicionar ao carrinho">
+            <i class="ph ph-shopping-bag"></i> Adicionar ao Carrinho
+          </button>
+        </div>
+        <div class="produto-card-info">
+          <p class="produto-category">Leggings</p>
+          <h3 class="produto-name">Legging Marsala Sculpt</h3>
+          <div class="produto-sizes" aria-label="Tamanhos disponíveis">
+            <button class="size-dot" aria-label="Tamanho PP">PP</button>
+            <button class="size-dot" aria-label="Tamanho P">P</button>
+            <button class="size-dot" aria-label="Tamanho M">M</button>
+            <button class="size-dot" aria-label="Tamanho G">G</button>
+            <button class="size-dot" aria-label="Tamanho GG">GG</button>
+          </div>
+          <div class="produto-price-row">
+            <span class="produto-price">R$ 189,90</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produto 2 -->
+      <article class="produto-card reveal reveal-delay-1">
+        <div class="produto-card-img-wrap">
+          <img class="produto-card-img" 
+               src="assets/images/product_top.jpg" 
+               alt="Top Rosé Racerback" loading="lazy" />
+          <div class="produto-card-badges">
+            <span class="badge badge-new">Novo</span>
+            <span class="badge badge-limited">Últimas unidades</span>
+          </div>
+          <div class="produto-card-actions">
+            <button class="produto-action-btn btn-wishlist" aria-label="Favoritar">🤍</button>
+            <button class="produto-action-btn" aria-label="Visualizar"><i class="ph ph-eye"></i></button>
+          </div>
+          <button class="produto-add-cart btn-add-cart" aria-label="Adicionar ao carrinho">
+            <i class="ph ph-shopping-bag"></i> Adicionar ao Carrinho
+          </button>
+        </div>
+        <div class="produto-card-info">
+          <p class="produto-category">Tops & Bras</p>
+          <h3 class="produto-name">Top Rosé Racerback</h3>
+          <div class="produto-sizes" aria-label="Tamanhos disponíveis">
+            <button class="size-dot" aria-label="Tamanho PP">PP</button>
+            <button class="size-dot" aria-label="Tamanho P">P</button>
+            <button class="size-dot" aria-label="Tamanho M">M</button>
+            <button class="size-dot" aria-label="Tamanho G">G</button>
+          </div>
+          <div class="produto-price-row">
+            <span class="produto-price">R$ 129,90</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produto 3 -->
+      <article class="produto-card reveal reveal-delay-2">
+        <div class="produto-card-img-wrap">
+          <img class="produto-card-img" 
+               src="assets/images/product_conjunto.jpg" 
+               alt="Conjunto Terracota Ribbed" loading="lazy" />
+          <div class="produto-card-badges">
+            <span class="badge badge-sale">-15%</span>
+          </div>
+          <div class="produto-card-actions">
+            <button class="produto-action-btn btn-wishlist" aria-label="Favoritar">🤍</button>
+            <button class="produto-action-btn" aria-label="Visualizar"><i class="ph ph-eye"></i></button>
+          </div>
+          <button class="produto-add-cart btn-add-cart" aria-label="Adicionar ao carrinho">
+            <i class="ph ph-shopping-bag"></i> Adicionar ao Carrinho
+          </button>
+        </div>
+        <div class="produto-card-info">
+          <p class="produto-category">Conjuntos</p>
+          <h3 class="produto-name">Conjunto Terracota Ribbed</h3>
+          <div class="produto-sizes" aria-label="Tamanhos disponíveis">
+            <button class="size-dot" aria-label="Tamanho P">P</button>
+            <button class="size-dot" aria-label="Tamanho M">M</button>
+            <button class="size-dot" aria-label="Tamanho G">G</button>
+            <button class="size-dot" aria-label="Tamanho GG">GG</button>
+          </div>
+          <div class="produto-price-row">
+            <span class="produto-price">R$ 279,90</span>
+            <span class="produto-price-old">R$ 329,90</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produto 4 -->
+      <article class="produto-card reveal reveal-delay-3">
+        <div class="produto-card-img-wrap">
+          <img class="produto-card-img" 
+               src="assets/images/product_shorts.jpg" 
+               alt="Short Rosé Pocket" loading="lazy" />
+          <div class="produto-card-badges">
+            <span class="badge badge-new">Novo</span>
+          </div>
+          <div class="produto-card-actions">
+            <button class="produto-action-btn btn-wishlist" aria-label="Favoritar">🤍</button>
+            <button class="produto-action-btn" aria-label="Visualizar"><i class="ph ph-eye"></i></button>
+          </div>
+          <button class="produto-add-cart btn-add-cart" aria-label="Adicionar ao carrinho">
+            <i class="ph ph-shopping-bag"></i> Adicionar ao Carrinho
+          </button>
+        </div>
+        <div class="produto-card-info">
+          <p class="produto-category">Shorts</p>
+          <h3 class="produto-name">Short Rosé Pocket</h3>
+          <div class="produto-sizes" aria-label="Tamanhos disponíveis">
+            <button class="size-dot" aria-label="Tamanho PP">PP</button>
+            <button class="size-dot" aria-label="Tamanho P">P</button>
+            <button class="size-dot" aria-label="Tamanho M">M</button>
+            <button class="size-dot" aria-label="Tamanho G">G</button>
+            <button class="size-dot" aria-label="Tamanho GG">GG</button>
+          </div>
+          <div class="produto-price-row">
+            <span class="produto-price">R$ 149,90</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produto 5 -->
+      <article class="produto-card reveal">
+        <div class="produto-card-img-wrap">
+          <img class="produto-card-img" 
+               src="assets/images/product_legging2.jpg" 
+               alt="Legging Verde Forest Seamless" loading="lazy" />
+          <div class="produto-card-badges">
+            <span class="badge badge-new">Novo</span>
+          </div>
+          <div class="produto-card-actions">
+            <button class="produto-action-btn btn-wishlist" aria-label="Favoritar">🤍</button>
+            <button class="produto-action-btn" aria-label="Visualizar"><i class="ph ph-eye"></i></button>
+          </div>
+          <button class="produto-add-cart btn-add-cart" aria-label="Adicionar ao carrinho">
+            <i class="ph ph-shopping-bag"></i> Adicionar ao Carrinho
+          </button>
+        </div>
+        <div class="produto-card-info">
+          <p class="produto-category">Leggings</p>
+          <h3 class="produto-name">Legging Verde Forest Seamless</h3>
+          <div class="produto-sizes" aria-label="Tamanhos disponíveis">
+            <button class="size-dot" aria-label="Tamanho PP">PP</button>
+            <button class="size-dot" aria-label="Tamanho P">P</button>
+            <button class="size-dot" aria-label="Tamanho M">M</button>
+            <button class="size-dot" aria-label="Tamanho G">G</button>
+          </div>
+          <div class="produto-price-row">
+            <span class="produto-price">R$ 199,90</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produto 6 — Destaque -->
+      <article class="produto-card reveal reveal-delay-1" 
+               style="grid-column: span 1; background:var(--clr-dark); display:flex; flex-direction:column; justify-content:flex-end; min-height:420px; position:relative; overflow:hidden;">
+        <img src="assets/images/banner_lancamentos.jpg" 
+             alt="Nova Coleção" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4;" />
+        <div style="position:relative;z-index:1;padding:1.5rem;">
+          <span class="badge badge-new" style="margin-bottom:0.75rem;display:inline-block;">Coleção Exclusiva</span>
+          <h3 class="heading-1" style="color:white;margin-bottom:0.5rem;font-family:var(--font-display);">
+            Look de Treino<br/>Completo
+          </h3>
+          <p class="body-sm" style="color:rgba(255,255,255,0.65);margin-bottom:1.25rem;">
+            Conjunto exclusivo — legging + top + short
+          </p>
+          <a href="https://wa.me/5519981400977?text=Quero%20saber%20mais%20sobre%20o%20look%20completo!" 
+             target="_blank" class="btn btn-rose btn-sm">
+            <i class="ph ph-whatsapp-logo"></i> Encomendar
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Load more -->
+    <div style="text-align:center;margin-top:3rem;" class="reveal">
+      <a href="https://www.instagram.com/depaulafitness_" target="_blank" rel="noopener"
+         class="btn btn-outline btn-lg" id="ver-mais-btn">
+        <i class="ph ph-instagram-logo"></i> Ver mais no Instagram
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     BANNER CAMPANHA
+════════════════════════════════════════════════════ -->
+<section id="campanha" aria-label="Campanha nova coleção">
+  <div class="campanha-bg">
+    <img src="assets/images/banner_lancamentos.jpg" 
+         alt="Nova coleção DePaula Fitness" loading="lazy" />
+  </div>
+  <div class="campanha-overlay"></div>
+  <div class="container campanha-content">
+    <span class="label" style="color:var(--clr-rose-lt)">Enviamos para todo o Brasil</span>
+    <h2 class="display-2">Sua melhor versão<br /><em style="font-style:italic">começa aqui</em></h2>
+    <p class="body-lg">Nossas peças foram desenvolvidas para acompanhar cada movimento — 
+    com tecidos de alta qualidade, modelagem exclusiva e muito estilo.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="#lancamentos" class="btn btn-primary btn-lg" id="campanha-cta">
+        <i class="ph ph-sparkle"></i> Explorar Coleção
+      </a>
+      <a href="https://wa.me/5519981400977" target="_blank" rel="noopener"
+         class="btn btn-secondary btn-lg">
+        <i class="ph ph-whatsapp-logo"></i> Falar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SOBRE A MARCA
+════════════════════════════════════════════════════ -->
+<section id="sobre" aria-label="Sobre a DePaula Fitness Store">
+  <div class="container">
+    <div class="sobre-grid">
+
+      <!-- Imagem decorativa (oculta em mobile) -->
+      <div class="sobre-img-wrap reveal-left">
+        <img class="sobre-img-main" 
+             src="assets/images/hero_banner.jpg" 
+             alt="DePaula Fitness — Estilo e performance" loading="lazy" />
+        <div class="sobre-img-badge">
+          <span class="number">100%</span>
+          <span class="text">Moda Fitness Premium</span>
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div class="sobre-text reveal-right">
+        <span class="label">Nossa história</span>
+        <h2 class="display-3">
+          Nascemos da paixão<br />pelo movimento
+        </h2>
+        <p class="body-lg">
+          A DePaula Fitness Store nasceu dentro do espaço <strong style="color:var(--clr-rose-lt)">@nossoboxfc</strong>, 
+          em Campinas/SP, com uma missão clara: oferecer moda fitness de qualidade 
+          para mulheres que vivem em movimento. Cada peça é cuidadosamente selecionada 
+          pensando no conforto, performance e no estilo que vai da academia para a rua.
+        </p>
+
+        <div class="sobre-features">
+          <div class="sobre-feature">
+            <div class="sobre-feature-icon">🧵</div>
+            <div class="sobre-feature-text">
+              <h4>Tecidos Premium</h4>
+              <p>Alta compressão, secagem rápida e conforto durante todo o treino</p>
+            </div>
+          </div>
+          <div class="sobre-feature">
+            <div class="sobre-feature-icon">📦</div>
+            <div class="sobre-feature-text">
+              <h4>Entrega para Todo o Brasil</h4>
+              <p>Embalagem cuidadosa e rastreamento em tempo real</p>
+            </div>
+          </div>
+          <div class="sobre-feature">
+            <div class="sobre-feature-icon">🔄</div>
+            <div class="sobre-feature-text">
+              <h4>Troca Facilitada</h4>
+              <p>Processo simples e sem burocracia para a sua comodidade</p>
+            </div>
+          </div>
+          <div class="sobre-feature">
+            <div class="sobre-feature-icon">⭐</div>
+            <div class="sobre-feature-text">
+              <h4>Atendimento Personalizado</h4>
+              <p>Time disponível no WhatsApp para te ajudar a escolher</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://www.instagram.com/depaulafitness_" target="_blank" rel="noopener"
+           class="btn btn-rose btn-lg" id="sobre-instagram-btn">
+          <i class="ph ph-instagram-logo"></i> Siga @depaulafitness_
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     DEPOIMENTOS
+════════════════════════════════════════════════════ -->
+<section id="depoimentos" aria-label="Avaliações de clientes">
+  <div class="container">
+
+    <header class="depoimentos-header">
+      <span class="label" style="color:var(--clr-bordeaux);display:block;margin-bottom:0.5rem;">Avaliações</span>
+      <h2 class="display-3 reveal">O que nossas clientes dizem</h2>
+      <p class="body-lg reveal reveal-delay-1" style="color:var(--clr-text-muted);margin-top:0.5rem;">
+        Mais de 400 clientes satisfeitas em todo o Brasil
+      </p>
+    </header>
+
+    <div class="depoimentos-grid">
+
+      <article class="depoimento-card reveal">
+        <div class="depoimento-stars" aria-label="5 estrelas">★★★★★</div>
+        <blockquote class="depoimento-text">
+          "A legging marsala é incrível! Veste super bem, não marca e dura muito. 
+          Já comprei 3 cores diferentes. A entrega foi rápida e a embalagem muito caprichada."
+        </blockquote>
+        <div class="depoimento-author">
+          <div class="depoimento-avatar" aria-hidden="true">A</div>
+          <div class="depoimento-author-info">
+            <h5>Amanda S.</h5>
+            <span>Campinas/SP · Compra verificada</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="depoimento-card reveal reveal-delay-1">
+        <div class="depoimento-stars" aria-label="5 estrelas">★★★★★</div>
+        <blockquote class="depoimento-text">
+          "Atendimento impecável! A Dé me ajudou a escolher o tamanho certo pelo WhatsApp 
+          e o conjunto chegou exatamente como esperava. Recomendo demais!"
+        </blockquote>
+        <div class="depoimento-author">
+          <div class="depoimento-avatar" aria-hidden="true">J</div>
+          <div class="depoimento-author-info">
+            <h5>Juliana M.</h5>
+            <span>São Paulo/SP · Compra verificada</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="depoimento-card reveal reveal-delay-2">
+        <div class="depoimento-stars" aria-label="5 estrelas">★★★★★</div>
+        <blockquote class="depoimento-text">
+          "Qualidade muito acima do preço! O short rosé é lindo e confortável. 
+          Usei na academia e vários treinos e continua novinho. Já indiquei para todas minhas amigas."
+        </blockquote>
+        <div class="depoimento-author">
+          <div class="depoimento-avatar" aria-hidden="true">P</div>
+          <div class="depoimento-author-info">
+            <h5>Priscila R.</h5>
+            <span>Ribeirão Preto/SP · Compra verificada</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     INSTAGRAM FEED
+════════════════════════════════════════════════════ -->
+<section id="instagram" aria-label="Feed do Instagram">
+  <div class="container">
+
+    <header class="instagram-header reveal">
+      <span class="label" style="color:var(--clr-rose);display:block;margin-bottom:0.5rem;">Nos Siga</span>
+      <h2 class="display-3">@depaulafitness_</h2>
+      <a href="https://www.instagram.com/depaulafitness_" 
+         target="_blank" rel="noopener"
+         class="instagram-handle" id="instagram-link">
+        <i class="ph ph-instagram-logo"></i> Ver perfil completo
+      </a>
+    </header>
+
+    <!-- Simulated Instagram grid using our product images -->
+    <div class="instagram-grid reveal">
+      <a href="https://www.instagram.com/depaulafitness_" target="_blank" rel="noopener" 
+         class="insta-item" aria-label="Post no Instagram">
+        <img src="assets/images/product_legging.jpg" alt="Legging marsala" loading="lazy" />
+        <div class="insta-overlay"><i class="ph ph-instagram-logo"></i></div>
+      </a>
+      <a href="https://www.instagram.com/depaulafitness_" target="_blank" rel="noopener"
+         class="insta-item" aria-label="Post no Instagram">
+        <img src="assets/images/banner_lancamentos.jpg" alt="Campanha" loading="lazy" />
+        <div class="insta-overlay"><i class="ph ph-instagram-logo"></i></div>
+      </a>
+      <a href="https://www.instagram.com/depaulafitness_" target="_blank" rel="noopener"
+         class="insta-item" aria-label="Post no Instagram">
+        <img src="assets/images/product_top.jpg" alt="Top rosé" loading="lazy" />
+        <div class="insta-overlay"><i class="ph ph-instagram-logo"></i></div>
+      </a>
+      <a href="https://www.instagram.com/depaulafitness_" target="_blank" rel="noopener"
+         class="insta-item" aria-label="Post no Instagram">
+        <img src="assets/images/product_conjunto.jpg" alt="Conjunto terracota" loading="lazy" />
+        <div class="insta-overlay"><i class="ph ph-instagram-logo"></i></div>
+      </a>
+      <a href="https://www.instagram.com/depaulafitness_" target="_blank" rel="noopener"
+         class="insta-item" aria-label="Post no Instagram">
+        <img src="assets/images/product_shorts.jpg" alt="Short rosé" loading="lazy" />
+        <div class="insta-overlay"><i class="ph ph-instagram-logo"></i></div>
+      </a>
+      <a href="https://www.instagram.com/depaulafitness_" target="_blank" rel="noopener"
+         class="insta-item" aria-label="Post no Instagram">
+        <img src="assets/images/product_legging2.jpg" alt="Legging verde" loading="lazy" />
+        <div class="insta-overlay"><i class="ph ph-instagram-logo"></i></div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     LOCALIZAÇÃO
+════════════════════════════════════════════════════ -->
+<section id="localizacao" aria-label="Localização da loja">
+  <div class="container">
+    <div class="localizacao-grid">
+
+      <div class="localizacao-info reveal-left">
+        <span class="label">Venha nos visitar</span>
+        <h2 class="display-3">Onde<br />Estamos</h2>
+
+        <div class="localizacao-items">
+          <div class="localizacao-item">
+            <div class="localizacao-item-icon">
+              <i class="ph ph-map-pin"></i>
+            </div>
+            <div class="localizacao-item-text">
+              <h4>Endereço</h4>
+              <p>Av. Estados Unidos, 445<br />Campinas — SP</p>
+            </div>
+          </div>
+          <div class="localizacao-item">
+            <div class="localizacao-item-icon">
+              <i class="ph ph-buildings"></i>
+            </div>
+            <div class="localizacao-item-text">
+              <h4>Espaço</h4>
+              <p>Dentro do <strong>@nossoboxfc</strong><br />Academia e Loja integradas</p>
+            </div>
+          </div>
+          <div class="localizacao-item">
+            <div class="localizacao-item-icon">
+              <i class="ph ph-clock"></i>
+            </div>
+            <div class="localizacao-item-text">
+              <h4>Horário de Atendimento</h4>
+              <p>Seg a Sex: 7h às 21h<br />Sábado: 8h às 14h</p>
+            </div>
+          </div>
+          <div class="localizacao-item">
+            <div class="localizacao-item-icon">
+              <i class="ph ph-whatsapp-logo"></i>
+            </div>
+            <div class="localizacao-item-text">
+              <h4>WhatsApp</h4>
+              <p>Atendimento online<br />todos os dias via WhatsApp</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/5519981400977?text=Olá!%20Gostaria%20de%20saber%20o%20horário%20de%20funcionamento." 
+           target="_blank" rel="noopener"
+           class="btn btn-primary" id="localizacao-whatsapp-btn">
+          <i class="ph ph-whatsapp-logo"></i> Falar no WhatsApp
+        </a>
+      </div>
+
+      <!-- Map placeholder (substituir por Google Maps embed real) -->
+      <div class="mapa-embed reveal-right" role="region" aria-label="Mapa de localização">
+        <div class="map-icon" aria-hidden="true">📍</div>
+        <p style="font-weight:600;color:var(--clr-bordeaux);">Av. Estados Unidos, 445<br/>Campinas — SP</p>
+        <p>@nossoboxfc</p>
+        <a href="https://maps.google.com/?q=Av.+Estados+Unidos,+445+Campinas+SP" 
+           target="_blank" rel="noopener"
+           class="btn btn-outline btn-sm" id="maps-btn">
+          <i class="ph ph-map-trifold"></i> Abrir no Google Maps
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     NEWSLETTER
+════════════════════════════════════════════════════ -->
+<section id="newsletter" aria-label="Inscrição newsletter">
+  <div class="container">
+    <div class="newsletter-content">
+      <span class="label">Fique por dentro</span>
+      <h2 class="display-3 reveal">Receba os lançamentos<br/>em primeira mão</h2>
+      <p class="body-lg reveal reveal-delay-1">
+        Cadastre seu e-mail e seja a primeira a saber das novidades, 
+        promoções exclusivas e lançamentos da coleção.
+      </p>
+      <form class="newsletter-form reveal reveal-delay-2" id="newsletter-form" novalidate>
+        <label for="newsletter-email" class="sr-only">Seu e-mail</label>
+        <input 
+          type="email" 
+          id="newsletter-email"
+          class="newsletter-input" 
+          placeholder="seu@email.com.br" 
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="btn btn-primary" id="newsletter-submit-btn">
+          <i class="ph ph-paper-plane-tilt"></i> Inscrever
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div class="footer-col">
+        <div class="nav-logo" style="margin-bottom:1rem;">
+          <img src="assets/images/logo.png" alt="DePaula Fitness" width="44" height="44" />
+          <div class="nav-logo-text">
+            <span class="brand-name">DePaula</span>
+            <span class="brand-sub">Fitness Store</span>
+          </div>
+        </div>
+        <p class="footer-brand-desc">
+          Moda fitness que te acompanha. Peças premium para quem não para — 
+          da academia ao cotidiano, com estilo e conforto.
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/depaulafitness_" target="_blank" rel="noopener"
+             class="footer-social-btn" aria-label="Instagram">
+            <i class="ph ph-instagram-logo"></i>
+          </a>
+          <a href="https://wa.me/5519981400977" target="_blank" rel="noopener"
+             class="footer-social-btn" aria-label="WhatsApp">
+            <i class="ph ph-whatsapp-logo"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Produtos -->
+      <div class="footer-col">
+        <h4>Produtos</h4>
+        <ul class="footer-links">
+          <li><a href="#lancamentos">Lançamentos</a></li>
+          <li><a href="#categorias">Leggings</a></li>
+          <li><a href="#categorias">Tops & Bras</a></li>
+          <li><a href="#categorias">Conjuntos</a></li>
+          <li><a href="#categorias">Shorts</a></li>
+        </ul>
+      </div>
+
+      <!-- Ajuda -->
+      <div class="footer-col">
+        <h4>Ajuda</h4>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/5519981400977">Como comprar</a></li>
+          <li><a href="https://wa.me/5519981400977">Política de troca</a></li>
+          <li><a href="https://wa.me/5519981400977">Prazo de entrega</a></li>
+          <li><a href="https://wa.me/5519981400977">Guia de tamanhos</a></li>
+          <li><a href="https://wa.me/5519981400977">Fale conosco</a></li>
+        </ul>
+      </div>
+
+      <!-- Contato -->
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul class="footer-links" style="gap:1rem;">
+          <li style="display:flex;align-items:flex-start;gap:0.5rem;">
+            <i class="ph ph-map-pin" style="color:var(--clr-rose);margin-top:2px;flex-shrink:0;"></i>
+            <span style="color:rgba(255,255,255,0.45);font-size:0.85rem;">Av. Estados Unidos, 445<br/>Campinas — SP</span>
+          </li>
+          <li style="display:flex;align-items:center;gap:0.5rem;">
+            <i class="ph ph-instagram-logo" style="color:var(--clr-rose);flex-shrink:0;"></i>
+            <a href="https://www.instagram.com/depaulafitness_" target="_blank">@depaulafitness_</a>
+          </li>
+          <li style="display:flex;align-items:center;gap:0.5rem;">
+            <i class="ph ph-whatsapp-logo" style="color:var(--clr-rose);flex-shrink:0;"></i>
+            <a href="https://wa.me/5519981400977">WhatsApp</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 DePaula Fitness Store. Todos os direitos reservados.</p>
+      <p>Desenvolvido com ❤️ para quem não para.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════
+     WHATSAPP FLOAT
+════════════════════════════════════════════════════ -->
+<div id="whatsapp-float">
+  <span class="whatsapp-tooltip">Fale conosco! ✨</span>
+  <a href="https://wa.me/5519981400977?text=Olá!%20Vi%20o%20site%20da%20DePaula%20Fitness%20e%20gostaria%20de%20saber%20mais!"
+     target="_blank" rel="noopener"
+     class="whatsapp-btn" 
+     id="whatsapp-float-btn"
+     aria-label="Falar no WhatsApp">
+    <i class="ph ph-whatsapp-logo"></i>
+  </a>
+</div>
+
+<!-- ─── Acessibilidade ─── -->
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+  }
+</style>
+
+<script src="js/main.js"></script>
+</body>
+</html>
